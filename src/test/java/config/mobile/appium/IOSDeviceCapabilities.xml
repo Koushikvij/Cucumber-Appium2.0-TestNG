@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<devices>
+	<iPhone15ProMax>
+		<deviceName></deviceName>
+		<udid></udid>
+		<platformVersion></platformVersion>
+		<ip></ip>
+		<port></port>
+		<systemIP></systemIP>
+		<systemPort></systemPort>
+	</iPhone15ProMax>
+	<iPadAir11>
+		<deviceName></deviceName>
+		<udid></udid>
+		<platformVersion></platformVersion>
+		<ip></ip>
+		<port></port>
+		<systemIP></systemIP>
+		<systemPort></systemPort>
+	</iPadAir11>
+	<AnyiPhoneDevice>
+		<deviceName>^(iPhone.*)(?!5|5S)$</deviceName>
+		<udid>^(iPhone.*)(?!5|5S)$</udid>
+		<platformVersion>.*.*</platformVersion>
+		<ip></ip>
+		<port></port>
+		<systemIP></systemIP>
+		<systemPort></systemPort>		
+	</AnyiPhoneDevice>
+	<AnyiPadDevice>
+		<deviceName>iPad.*</deviceName>
+		<udid>iPad.*</udid>
+		<platformVersion>.*.*</platformVersion>
+		<ip></ip>
+		<port></port>
+		<systemIP></systemIP>
+		<systemPort></systemPort>		
+	</AnyiPadDevice>
+</devices>

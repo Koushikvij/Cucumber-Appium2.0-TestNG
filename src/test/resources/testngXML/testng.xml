@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="false" preserve-order="true">
+	<parameter name="cucumber.filter.tags" value="" />
+	<!--	mobile/web/gui/db/api	-->
+	<parameter name="AUTType" value="mobile" />
+	<!--	devicename as is capabilities.xml file	-->
+	<parameter name="capabilityLocator" value="emulator_pixel3a" />
+	
+	<test name="Test">
+		<classes>
+			<class name="mobile.appium.runner.testRunner"/>
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->

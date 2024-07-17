@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<devices>
+	<GalaxyS23Ultra>
+		<deviceName></deviceName>
+		<udid></udid>
+		<platformVersion></platformVersion>
+		<ip></ip>
+		<port></port>
+		<systemIP></systemIP>
+		<systemPort></systemPort>
+	</GalaxyS23Ultra>
+	<emulator_pixel3a>
+		<deviceName>emulator-5554</deviceName>
+	</emulator_pixel3a>
+	<AnyDevice>
+		<deviceName>.*.*</deviceName>
+		<udid>.*.*</udid>
+		<platformVersion>.*.*</platformVersion>
+		<ip></ip>
+		<port></port>
+		<systemIP></systemIP>
+		<systemPort></systemPort>		
+	</AnyDevice>
+</devices>
