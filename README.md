@@ -1,45 +1,177 @@
-**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
+## General System Requirements
 
-When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
+#### Node JS
 
-*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
+We need node js to download Appium beta version & drivers easily.
+* Download[ Node Js](https://nodejs.org/en) depending on your operating system.
+
+#### Java JDK & JAVA_HOME variable
+
+* [Open JDK](https://openjdk.org)
+* [JAVA_HOME setup for Windows](https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html)
+* [JAVA_HOME setup for Mac](https://mkyong.com/java/how-to-set-java_home-environment-variable-on-mac-os-x/)
+
+I Tested the following steps on MAC OS Monterrey:
+
+* Installed Adopted [Open JDK with Homebrew](https://formulae.brew.sh/cask/adoptopenjdk)
+* To return where was the SDK installed I used the command:
+```bash
+    /usr/libexec/java_home
+```
+* If you want to check the java version:
+```bash
+    /usr/libexec/java_home -V
+```
+* Open the zshenv file to insert the JAVA_HOME variable (i):
+```bash
+    vim ~/.zshenv
+```
+* Enter the environment variable and save the vim session (:wq!):
+```bash
+    export JAVA_HOME=$(/usr/libexec/java_home)
+```
+* Source and apply the changes in the system:
+```bash
+    source ~/.zshenv
+```
+* You can check if it was set correctly running the command:
+```bash
+    echo $JAVA_HOME
+```
+* It should return something like: 
+```bash
+    /Library/Java/JavaVirtualMachines/adoptopenjdk-16.jdk/Contents/Home
+```
+
+## Android Setup
+#### Android Studio & ANDROID_HOME variable
+
+* [Android Studio](https://developer.android.com/studio?hl=es-419&gclsrc=aw.ds&gclid=Cj0KCQjwyOuYBhCGARIsAIdGQRNrDv20QvoOy_-I5E1LoZdOLu3nvhlwX_7EjPeHcE1kGQNNcIVOme0aAqckEALw_wcB)
+* [ANDROID_HOME setup for Windows](https://www.testingdocs.com/setting-android_home-environment-variable-on-windows/)
+* [ANDROID_HOME setup for Mac](https://stackoverflow.com/questions/19986214/setting-android-home-enviromental-variable-on-mac-os-x)
+
+Tested the following steps on MAC OS Monterrey:
+* Android studio on Mac can be located at:
+```bash
+    * cd /Users/[USER]/Library/Android/sdk
+```
+* We need to add a reference to a couple of folders inside of that SDK
+   * Tools & Platform Tools
+* Open the zshenv file to insert the ANDROID_HOME variable (i):
+```bash
+    vim ~/.zshenv
+```
+* Enter the environment variables and save the vim session (:wq!):
+```bash
+    export ANDROID_HOME="/Users/[USER]/Library/Android/sdk"
+    export PATH=$ANDROID_HOME/platform-tools:$PATH
+    export PATH=$ANDROID_HOME/tools:$PATH
+```
+* Source and apply the changes in the system:
+```bash
+    source ~/.zshenv
+```
+* You can check if it was set correctly running the command:
+```bash
+    echo $ANDROID_HOME
+```
+* It should return something like: 
+```bash
+    /Users/[USER]/Library/Android/sdk
+```
+* With this configured you can access the command [Android Debug Bridge](https://developer.android.com/studio/command-line/adb)
+```bash
+    adb
+```
+- - -
+
+## IOS Setup
+
+1. Install XCode from the MacOs App Store
+2. Install [XCode Command line tools](https://www.freecodecamp.org/news/install-xcode-command-line-tools/)
+```bash
+    xcode-select --install
+```
+- Make sure it is installed correctly using the following command:
+```bash
+    xcode-select -p
+```
+- It should return something like(may defer from your OS version):
+```bash
+    /Applications/Xcode.app/Contents/Developer
+```
+3. Install Carthage(It is a simple dependency manager for macOS and iOS, created by a group of developers from GitHub).
+```bash
+    brew install carthage
+```
 
 ---
 
-## Edit a file
+#### Download Appium Inspector
+In order to find the correct locators to map elements, you will need to have this tool installed in your computer.
 
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
+* [Appium Inspector Releases](https://github.com/appium/appium/blob/1.x/docs/en/writing-running-appium/web/chromedriver.md)
 
-1. Click **Source** on the left side.
-2. Click the README.md link from the list of files.
-3. Click the **Edit** button.
-4. Delete the following text: *Delete this line to make a change to the README from Bitbucket.*
-5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
-6. Go back to the **Source** page.
+For this project you can use the following configuration:
 
----
+| Server Key | Server Value |
+| ------------- | ------------- |
+| Remote Host | 0.0.0.0 |
+| Remote Port | 4724 |
+| Remote Path | / |
 
-## Create a file
+Android Desired Capabilities(Example)
+| Desired Capability Key  | Desired Capability Value |
+| ------------- | ------------- |
+| platformName  | Android |
+| platformVersion  | [OS VERSION / IMAGE]  |
+| deviceName | [EMULATED_DEVICE_NAME] | 
+| app | /[PROJECT_PATH]/[APP_NAME].apk |
+| appium:automationName | UIAutomator2 |
 
-Next, you’ll add a new file to this repository.
+IOS Desired Capabilities(Emulator - App)
+| Desired Capability Key  | Desired Capability Value |
+| ------------- | ------------- |
+| platformName  | IOS |
+| platformVersion  | [OS VERSION / IMAGE]  |
+| deviceName | [EMULATED_DEVICE_NAME] | 
+| app | /[PROJECT_PATH]/[APP_NAME].app |
+| appium:automationName | XCUItest |
 
-1. Click the **New file** button at the top of the **Source** page.
-2. Give the file a filename of **contributors.txt**.
-3. Enter your name in the empty file space.
-4. Click **Commit** and then **Commit** again in the dialog.
-5. Go back to the **Source** page.
+#### Install Apium 
+Appium is an open source test automation framework for use with native, hybrid and mobile web apps. 
+It drives iOS, Android, and Windows apps using the WebDriver protocol.
 
-Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
+* Install [Appium](https://appium.io) from the official documentation 
+* Install [Appium 2](https://appiumpro.com/editions/122-installing-appium-20-and-the-driver-and-plugins-cli) by Node JS(Beta):
+```bash
+    npm install -g appium@next
+```
+Check the appium version using
+```bash
+    appium -v
+```
 
----
+#### Appium Doctor
+To check if your OS meets the appium requirements, install this node package.
+* [Appium Doctor Package](https://github.com/appium/appium-doctor)
+Install it using the command 
+```bash 
+npm install appium-doctor -g
+```
+And then use the library:
+```bash 
+appium-doctor
+```
 
-## Clone a repository
-
-Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
-
-1. You’ll see the clone button under the **Source** heading. Click that button.
-2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
-3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
-4. Open the directory you just created to see your repository’s files.
-
-Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
+#### Appium drivers
+If you want Appium to work correctly, you need to download and have the android/ios driver in your system.
+Run the commands:
+```bash 
+appium driver install xcuitest
+appium driver install uiautomator2
+```
+Check the installed drivers using
+```bash 
+appium driver list
+```
